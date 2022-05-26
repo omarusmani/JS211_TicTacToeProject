@@ -2,6 +2,7 @@
 
 // brings in the assert module for unit testing
 const assert = require('assert');
+const { Console } = require('console');
 // brings in the readline module to access the command line
 const readline = require('readline');
 // use the readline module to print out to the command line
@@ -33,6 +34,11 @@ const printBoard = () => {
 }
 
 const horizontalWin = () => {
+  for(let i=0;i<3;i++){
+    if(board[i][0]==board[i][1]==board[i][2]){
+      console.log(playerTurn+" Wins!")
+    }
+  }
   // Your code here to check for horizontal wins
 }
 
@@ -58,7 +64,11 @@ const checkForWin = () => {
 }
 
 const ticTacToe = (row, column) => {
-  if(board[row][column]!=" "){
+  let legal=["0","1","2"]//all inputs are chars so array had to be a 
+  if(!legal.includes(row)&&!legal.includes(column)){
+    console.log("Please Enter a Legal Number")
+  }
+  else if(board[row][column]!=" "){
     console.log("Nice Try, This Field is Occupied")//Checking for occupied fields
   }
   else{
