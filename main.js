@@ -34,47 +34,70 @@ const printBoard = () => {
 }
 
 const horizontalWin = () => {
-  for(let i=0;i<3;i++){
-    if(board[i][0]==board[i][1]==board[i][2]){
-      console.log(playerTurn+" Wins!")
+    if(board[0][0]==board[0][1]&&board[0][1]==board[0][2]){
+      return true;
     }
-  }
+    else if(board[1][0]==board[1][1]&&board[1][1]==board[1][2]){
+      return true;
+    }
+    else if(board[2][0]==board[2][1]&&board[2][1]==board[2][2]){
+      return true;
+    }
+
   // Your code here to check for horizontal wins
 }
 
 const verticalWin = () => {
+  if(board[0][0]==board[1][0]&&board[1][0]==board[2][0]){
+    return true;
+  }
+  else if(board[0][1]==board[1][1]&&board[1][1]==board[2][1]){
+    return true;
+  }
+  else if(board[0][2]==board[1][2]&&board[1][2]==board[2][2]){
+    return true;
+  }
+
+
   // Your code here to check for vertical wins
 }
 
 const diagonalWin = () => {
+  if(board[0][0]==board[1][1]&&board[1][1]==board[2][2]){
+    return true;
+  }
+  else if(board[0][2]==board[1][1]&&board[1][1]==board[2][0]){
+    return true;
+  }
+
   // Your code here to check for diagonal wins
 }
 
 const checkForWin = () => {
-  diagonalWin()
-  horizontalWin()
-  verticalWin()
+  if(diagonalWin()||horizontalWin()||verticalWin()){
+    return true;
+  }
   if(playerTurn=="X"){
-    playerTurn="O"
+    playerTurn='O'
   }
   else{
-    playerTurn="X"
+    playerTurn='X'
   }
   // Your code here call each of the check for types of wins
 }
 
 const ticTacToe = (row, column) => {
-  let legal=["0","1","2"]//all inputs are chars so array had to be a 
-  if(!legal.includes(row)&&!legal.includes(column)){
-    console.log("Please Enter a Legal Number")
-  }
-  else if(board[row][column]!=" "){
-    console.log("Nice Try, This Field is Occupied")//Checking for occupied fields
-  }
-  else{
+  // let legal=["0","1","2"]//all inputs are chars so array had to be a 
+  // if(!legal.includes(row)&&!legal.includes(column)){
+  //   console.log("Please Enter a Legal Number")
+  // }
+  // else if(board[row][column]!=" "){
+  //   console.log("Nice Try, This Field is Occupied")//Checking for occupied fields
+  // }
+  // else{
   board[row][column]=playerTurn;
   checkForWin();
-  }
+  // }
   // Your code here to place a marker on the board
   // then check for a win
 }
