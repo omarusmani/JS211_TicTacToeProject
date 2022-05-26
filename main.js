@@ -77,27 +77,26 @@ const checkForWin = () => {
   if(diagonalWin()||horizontalWin()||verticalWin()){
     return true;
   }
-  if(playerTurn=="X"){
-    playerTurn='O'
-  }
-  else{
-    playerTurn='X'
-  }
   // Your code here call each of the check for types of wins
 }
 
 const ticTacToe = (row, column) => {
-  // let legal=["0","1","2"]//all inputs are chars so array had to be a 
-  // if(!legal.includes(row)&&!legal.includes(column)){
-  //   console.log("Please Enter a Legal Number")
-  // }
-  // else if(board[row][column]!=" "){
-  //   console.log("Nice Try, This Field is Occupied")//Checking for occupied fields
-  // }
-  // else{
-  board[row][column]=playerTurn;
-  checkForWin();
-  // }
+  let legal=["0","1","2"]//all inputs are chars so array had to be a 
+  if(!legal.includes(row)&&!legal.includes(column)){
+      console.log("Please Enter a Legal Number")
+    }
+    else if(board[row][column]!=" "){
+        console.log("Nice Try, This Field is Occupied")//Checking for occupied fields
+    }
+        board[row][column]=playerTurn;
+        checkForWin();
+        if(playerTurn=="X"){
+          playerTurn='O'
+        }
+        else{
+          playerTurn='X'
+        }
+  
   // Your code here to place a marker on the board
   // then check for a win
 }
